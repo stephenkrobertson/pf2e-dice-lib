@@ -7,10 +7,10 @@ export let cryptoRandomGenerator;
 // 	Settings.registerSettings();
 // });
 
-const allowedUsers = ["Ellev"];
-const isFudgeEnabledForUser = allowedUsers.includes(game.user.name);
-
 Hooks.once('ready', () => {
+	const allowedUsers = ["Ellev"];
+	const isFudgeEnabledForUser = allowedUsers.includes(game.user.name);
+
 	cryptoRandomGenerator = new CryptoRandomGenerator(Settings.isFudgeEnable(), Settings.getPoolSize());
 	CONFIG.Dice.randomUniform = () => cryptoRandomGenerator.getRandom();
 	// Freeze the Dice class for players to avoid modification (harder to cheat)
@@ -20,6 +20,9 @@ Hooks.once('ready', () => {
 });
 
 Hooks.on('renderSidebarTab', (app, html, data) => {
+	const allowedUsers = ["Ellev"];
+	const isFudgeEnabledForUser = allowedUsers.includes(game.user.name);
+
 	if (app.tabName !== "chat") return;
 	
 	if (isFudgeEnabledForUser || true) {
