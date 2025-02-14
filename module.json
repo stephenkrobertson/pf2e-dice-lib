@@ -38,9 +38,9 @@
 			"path": "languages/es.json"
 		}
 	],
-	"url": "https://github.com/JDR-Ninja/foundryvtt-dice-cheater-protector",
-	"download": "https://github.com/JDR-Ninja/foundryvtt-dice-cheater-protector/releases/download/0.2.4/dice-rng-protector.zip",
-	"manifest": "https://github.com/JDR-Ninja/foundryvtt-dice-cheater-protector/releases/download/latest/module.json",
-	"bugs": "https://github.com/JDR-Ninja/foundryvtt-dice-cheater-protector/issues",
-    "readme": "https://github.com/JDR-Ninja/foundryvtt-dice-cheater-protector/blob/master/README.md"
+	"url": "https://github.com/stephenkrobertson/pf2e-dice-lib",
+	"download": "https://github.com/stephenkrobertson/pf2e-dice-lib/releases/download/0.2.4/dice-rng-protector.zip",
+	"manifest": "https://github.com/stephenkrobertson/pf2e-dice-lib/releases/download/latest/module.json",
+	"bugs": "https://github.com/stephenkrobertson/pf2e-dice-lib/issues",
+    "readme": "https://github.com/stephenkrobertson/pf2e-dice-lib/blob/master/README.md"
 }
