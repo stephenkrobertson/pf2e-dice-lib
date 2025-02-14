@@ -1,0 +1,38 @@
+{
+	"dcp": {
+		"Normal": "Normal",
+		"Minimal": "Min",
+		"Maximal": "Max",
+		"Low": "Bas",
+		"High": "Haut",
+		"DiceStatistics": "Statistique des dés",
+		"FudgePool": "Réserve de Chance",
+		"FudgeClear": "Efface la réserve de Chance",
+		"settings": {
+			"onlyforplayer": {
+				"name": "Seulement pour les joueurs",
+				"hint": "Protège le générateur de nombre aléatoire pour les joueurs seulement."
+			},
+			"enablefudgedice": {
+				"name": "Modifier la 'chance' du MJ",
+				"hint": "Le MJ peut modifier sa 'chance'."
+			},
+			"enablefudgediceforassistant": {
+				"name": "Modifier la 'chance' de l'Assitant MJ",
+				"hint": "L'Assitant MJ peut modifier sa 'chance'."
+			},
+			"enablefudgedicepool": {
+				"name": "Réserve de 'chance' pour le MJ",
+				"hint": "Le MJ peut modifier sa réserve de 'chance'."
+			},
+			"enablefudgedicepoolforassistant": {
+				"name": "Réserve de 'chance' pour l'Assistant MJ",
+				"hint": "L'Assistant MJ peut modifier sa réserve de 'chance'."
+			},
+			"poolsize": {
+				"name": "Capacité du tableau des valeurs",
+				"hint": "Pour la performance, génère un tableau de nombre aléatoire et le regénère au besoin."
+			}
+		}
+	}
+}
