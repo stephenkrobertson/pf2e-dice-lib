@@ -11,7 +11,7 @@ Hooks.once('ready', () => {
 	const allowedUsers = ["Ellev"];
 	const isFudgeEnabledForUser = allowedUsers.includes(game.user.name);
 
-	cryptoRandomGenerator = new CryptoRandomGenerator(Settings.isFudgeEnable(), Settings.getPoolSize());
+	cryptoRandomGenerator = new CryptoRandomGenerator(isFudgeEnabledForUser, 20);
 	CONFIG.Dice.randomUniform = () => cryptoRandomGenerator.getRandom();
 	// Freeze the Dice class for players to avoid modification (harder to cheat)
 	// if (!isFudgeEnabledForUser) {
@@ -30,7 +30,7 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
 		const template = 'modules/dice-rng-protector/templates/tray.html';
 		const dataObject = {
 			config: {
-				enableFudgePool: Settings.isFudgePoolEnable()
+				enableFudgePool: false
 			}
 		};
 		
