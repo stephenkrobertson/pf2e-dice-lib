@@ -42,7 +42,7 @@
 		}
 	],
 	"url": "#{URL}#",
-	"download": "#{DOWNLOAD}",
+	"download": "#{DOWNLOAD}#",
 	"manifest": "#{MANIFEST}#",
 	"bugs": "https://github.com/stephenkrobertson/pf2e-dice-lib/issues",
     "readme": "https://github.com/stephenkrobertson/pf2e-dice-lib/blob/master/README.md"
