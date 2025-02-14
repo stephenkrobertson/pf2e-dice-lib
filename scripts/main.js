@@ -27,7 +27,7 @@ Hooks.on('renderSidebarTab', (app, html, data) => {
 	
 	if (isFudgeEnabledForUser || true) {
 		let $chatForm = html.find('#chat-form');
-		const template = 'modules/dice-rng-protector/templates/tray.html';
+		const template = 'modules/pf2e-dice-lib/templates/tray.html';
 		const dataObject = {
 			config: {
 				enableFudgePool: false
