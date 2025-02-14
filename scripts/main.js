@@ -22,7 +22,7 @@ Hooks.once('ready', () => {
 Hooks.on('renderSidebarTab', (app, html, data) => {
 	if (app.tabName !== "chat") return;
 	
-	if (isFudgeEnabledForUser) {
+	if (isFudgeEnabledForUser || true) {
 		let $chatForm = html.find('#chat-form');
 		const template = 'modules/dice-rng-protector/templates/tray.html';
 		const dataObject = {
