@@ -14,9 +14,9 @@ Hooks.once('ready', () => {
 	cryptoRandomGenerator = new CryptoRandomGenerator(Settings.isFudgeEnable(), Settings.getPoolSize());
 	CONFIG.Dice.randomUniform = () => cryptoRandomGenerator.getRandom();
 	// Freeze the Dice class for players to avoid modification (harder to cheat)
-	if (!isFudgeEnabledForUser) {
-		Object.freeze(CONFIG.Dice);
-	}
+	// if (!isFudgeEnabledForUser) {
+	// 	Object.freeze(CONFIG.Dice);
+	// }
 });
 
 Hooks.on('renderSidebarTab', (app, html, data) => {
