@@ -1,0 +1,49 @@
+{
+	"id": "pf2e-dice-lib",
+	"title": "PF2E Dicelib",
+	"description": "Improves RNG and provides protection against common ways of cheating.",
+	"version": "#{VERSION}#",
+	"compatibility": {
+		"minimum": "12",
+		"verified": 12.331
+	},
+	"authors": [
+		{
+			"name": "S.Rob"
+		},
+		{
+			"name": "JDR Ninja"
+		},
+		{
+			"name": "NotoriusNeo"
+		}
+	],
+	"esmodules": [
+		"/scripts/main.js"
+	],
+	"styles": [
+		"/styles/dcp.css"
+	],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "languages/en.json"
+		},
+		{
+			"lang": "fr",
+			"name": "Français",
+			"path": "languages/fr.json"
+		},
+		{
+			"lang": "es",
+			"name": "Español",
+			"path": "languages/es.json"
+		}
+	],
+	"url": "#{URL}#",
+	"download": "#{DOWNLOAD}#",
+	"manifest": "#{MANIFEST}#",
+	"bugs": "https://github.com/stephenkrobertson/pf2e-dice-lib/issues",
+    "readme": "https://github.com/stephenkrobertson/pf2e-dice-lib/blob/master/README.md"
+}
