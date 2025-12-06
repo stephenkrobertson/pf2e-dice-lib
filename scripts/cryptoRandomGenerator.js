@@ -1,7 +1,12 @@
-import { Settings } from './settings.js';
+import { Settings, MODULE_ID } from './settings.js';
 
 // Generates random number using a cryptographic method
 export class CryptoRandomGenerator {
+    SOCKET_ACTION_SETFUDGE = 'sf';
+    SOCKET_ACTION_ADDFUDGE = 'af';
+    SOCKET_ACTION_CLEARFUDGE = 'cf';
+    SOCKET_ACTION_RESET = 'r';
+
     DICE_MIN = 0.999;
     DICE_MAX = 0.001;
 
@@ -20,7 +25,25 @@ export class CryptoRandomGenerator {
         this.poolSize = poolSize;
 
 		this.#generatePool();
+        this.setupSocket();
 	}
+
+    setupSocket() {
+        game.socket.on(`module.${MODULE_ID}`, async (data) => {
+            if (!Settings.isAllowedUser()) {
+                if (data.action === this.SOCKET_ACTION_SETFUDGE)
+                    Settings.fudgeValue = data.fudge;
+                else if (data.action === this.SOCKET_ACTION_ADDFUDGE)
+                    this.#pushFudge(data.fudge);
+                else if (data.action === this.SOCKET_ACTION_CLEARFUDGE)
+                    this.clearFudge();
+                else if (data.action === this.SOCKET_ACTION_RESET) {
+                    Settings.fudgeValue = 'NORMAL';
+                    this.clearFudge();
+                }
+            }
+        });
+      }
 
 	#generatePool() {
 		let buffer = new ArrayBuffer(this.poolSize * 8);
@@ -35,6 +58,23 @@ export class CryptoRandomGenerator {
 		}
 	}
 
+    #pushFudge(fudge) {
+        switch (fudge) {
+            case "MINIMAL":
+                this.#fudgePool.push(this.DICE_MIN);
+                break;
+            case "MAXIMAL":
+                this.#fudgePool.push(this.DICE_MAX);
+                break;
+            case "LOW":
+                this.#fudgePool.push(Math.min(Math.pow(this.#readPool(), 0.5), this.DICE_MIN));
+                break;
+            case "HIGH":
+                this.#fudgePool.push(Math.max(Math.pow(this.#readPool(), 2), this.DICE_MAX));
+                break;
+        }
+    }
+
     #readPool() {
         if (this.#pool.length === 0) {
 			this.#generatePool();
@@ -48,7 +88,7 @@ export class CryptoRandomGenerator {
     }
 
 	getRandom() {
-        if (!this.#isFudgeEnable) {
+        if (!this.#isFudgeEnable && Settings.fudgeValue === 'NORMAL') {
             return this.#readPool();
         }
 
@@ -71,25 +111,40 @@ export class CryptoRandomGenerator {
 	}
 
     addFudge(fudge) {
-        const enableFudgePool = 
-            (game.user.role === CONST.USER_ROLES.GAMEMASTER && Settings.getEnableFudgeDicePool()) ||
-            (game.user.role === CONST.USER_ROLES.ASSISTANT && Settings.getEnableFudgeDicePoolForAssistant())
+        const enableFudgePool = this.#isFudgeEnable
 
         if (enableFudgePool) {
-            switch (fudge) {
-                case "MINIMAL":
-                    this.#fudgePool.push(this.DICE_MIN);
-                    break;
-                case "MAXIMAL":
-                    this.#fudgePool.push(this.DICE_MAX);
-                    break;
-                case "LOW":
-                    this.#fudgePool.push(Math.min(Math.pow(this.#readPool(), 0.5), this.DICE_MIN));
-                    break;
-                case "HIGH":
-                    this.#fudgePool.push(Math.max(Math.pow(this.#readPool(), 2), this.DICE_MAX));
-                    break;
-            }
+            this.#pushFudge(fudge);
         }
+    }
+
+    sendSetFudge(value) {
+        if (!Settings.isAllowedUser()) return;
+        game.socket.emit(`module.${MODULE_ID}`, {
+          action: this.SOCKET_ACTION_SETFUDGE,
+          fudge: value
+        });
+    }
+
+    sendAddFudge(value) {
+        if (!Settings.isAllowedUser()) return;
+        game.socket.emit(`module.${MODULE_ID}`, {
+          action: this.SOCKET_ACTION_ADDFUDGE,
+          fudge: value
+        });
+    }
+
+    sendClearFudge() {
+        if (!Settings.isAllowedUser()) return;
+        game.socket.emit(`module.${MODULE_ID}`, {
+          action: this.SOCKET_ACTION_CLEARFUDGE
+        });
+    }
+
+    sendReset() {
+        if (!Settings.isAllowedUser()) return;
+        game.socket.emit(`module.${MODULE_ID}`, {
+          action: this.SOCKET_ACTION_RESET
+        });
     }
 }

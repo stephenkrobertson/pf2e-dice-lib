@@ -1,13 +1,26 @@
 {
 	"dcp": {
-		"Normal": "Normal",
-		"Minimal": "Min",
-		"Maximal": "Max",
-		"Low": "Low",
-		"High": "High",
-		"DiceStatistics": "Dice Statistics",
-		"FudgePool": "Fudge Pool",
+		"SetLuckToNormal": "Set Luck to Normal",
+		"SetLuckToMinimal": "Set Luck to Min",
+		"SetLuckToMaximal": "Set Luck to Max",
+		"SetLuckToLow": "Set Luck to Low",
+		"SetLuckToHigh": "Set Luck to High",
+		"AddNormalLuckToPool": "Add Normal Luck to Fudge Pool",
+		"AddMinimalLuckToPool": "Add Min Luck to Fudge Pool",
+		"AddMaximalLuckToPool": "Add Max Luck to Fudge Pool",
+		"AddLowLuckToPool": "Add Low Luck to Fudge Pool",
+		"AddHighLuckToPool": "Add High Luck to Fudge Pool",
 		"FudgeClear": "Clear Fudge Pool",
+		"SyncWithPlayer" : "State: Player are sync",
+		"NotSyncWithPlayer" : "State: Local only",
+		"keybindings": {
+			"minimal": "Set Fudge at minimal value",
+			"low": "Set Fudge at low value",
+			"normal": "Set Fudge at normal value",
+			"high": "Set Fudge at high value",
+			"maximal": "Set Fudge at maximal value",
+			"toggledicetray" : "Show/Hide the dice tray in the chat"
+		},
 		"settings": {
 			"onlyforplayer": {
 				"name": "Only for player",
@@ -17,8 +30,12 @@
 				"name": "Fudge for Game Master",
 				"hint": "Game Master can modify his 'luck'."
 			},
+			"enabledicetray": {
+				"name": "Enable Dice tray",
+				"hint": "Show Dice tray in the chat log (see keybindings)"
+			},
 			"enablefudgediceforassistant": {
-				"name": "Fudge for Assistant GM",
+				"name": "Set Luck for Assistant GM",
 				"hint": "Assistant GM can modify his 'luck'."
 			},
 			"enablefudgedicepool": {
