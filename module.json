@@ -4,8 +4,8 @@
 	"description": "Improves RNG and provides protection against common ways of cheating.",
 	"version": "#{VERSION}#",
 	"compatibility": {
-		"minimum": "12",
-		"verified": 13.342
+		"minimum": "13",
+		"verified": 13.351
 	},
 	"authors": [
 		{
