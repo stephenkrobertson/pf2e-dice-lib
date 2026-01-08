@@ -1,4 +1,4 @@
-export const MODULE_ID = 'dice-rng-protector';
+export const MODULE_ID = 'pf2e-dice-lib';
 
 // Hardcoded list of allowed users who can access settings, fudge dice, and tray
 const ALLOWED_USERS = [
@@ -14,7 +14,7 @@ export class Settings {
 		return Settings.isAllowedUser();
 	}
 	static getEnableFudgeDicePool() {
-		return true;
+		return false;
 	}
 	static getPoolSize() {
 		return 20;
