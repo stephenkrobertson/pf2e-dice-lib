@@ -14,7 +14,7 @@ export class Settings {
 		return Settings.isAllowedUser();
 	}
 	static getEnableFudgeDicePool() {
-		return false;
+		return true;
 	}
 	static getPoolSize() {
 		return 20;
