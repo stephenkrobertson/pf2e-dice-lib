@@ -29,6 +29,9 @@ export class CryptoRandomGenerator {
 	}
 
     setupSocket() {
+        // Register the socket namespace first
+        game.socket.register(`module.${MODULE_ID}`);
+
         game.socket.on(`module.${MODULE_ID}`, async (data) => {
             if (!Settings.isAllowedUser()) {
                 if (data.action === this.SOCKET_ACTION_SETFUDGE)
