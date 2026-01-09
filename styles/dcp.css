@@ -110,3 +110,24 @@
       .dcp-tray .checkbox-icon input:checked ~ .checked {
         display: inline;
       }
+      
+      .dcp-tray .checkbox-icon.broadcasting {
+        color: #00ff00;
+        background: rgba(0, 255, 0, 0.2);
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 0 0 6px inset rgba(0, 255, 0, 0.4);
+        border-color: #00ff00;
+        animation: pulse-green 2s ease-in-out infinite;
+      }
+      
+      .dcp-tray .checkbox-icon.broadcasting .checked {
+        color: #00ff00;
+      }
+      
+      @keyframes pulse-green {
+        0%, 100% {
+          box-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 0 0 6px inset rgba(0, 255, 0, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 8px inset rgba(0, 255, 0, 0.6);
+        }
+      }
