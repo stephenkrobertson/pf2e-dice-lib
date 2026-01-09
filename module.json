@@ -44,6 +44,7 @@
 	"url": "#{URL}#",
 	"download": "#{DOWNLOAD}#",
 	"manifest": "#{MANIFEST}#",
+	"socket": true,
 	"bugs": "https://github.com/stephenkrobertson/pf2e-dice-lib/issues",
     "readme": "https://github.com/stephenkrobertson/pf2e-dice-lib/blob/master/README.md"
 }

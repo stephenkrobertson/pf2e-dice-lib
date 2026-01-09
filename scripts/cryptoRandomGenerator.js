@@ -29,10 +29,14 @@ export class CryptoRandomGenerator {
 	}
 
     setupSocket() {
-        // Register the socket namespace first
-        game.socket.register(`module.${MODULE_ID}`);
-
-        game.socket.on(`module.${MODULE_ID}`, async (data) => {
+        if (!game.socket) {
+            console.error(`[${MODULE_ID}] game.socket is not available!`);
+            return;
+        }
+        
+        const socketName = `module.${MODULE_ID}`;
+        
+        game.socket.on(socketName, async (data) => {
             if (!Settings.isAllowedUser()) {
                 if (data.action === this.SOCKET_ACTION_SETFUDGE)
                     Settings.fudgeValue = data.fudge;
@@ -123,6 +127,10 @@ export class CryptoRandomGenerator {
 
     sendSetFudge(value) {
         if (!Settings.isAllowedUser()) return;
+        if (!game.socket) {
+            console.error(`[${MODULE_ID}] sendSetFudge: game.socket is not available!`);
+            return;
+        }
         game.socket.emit(`module.${MODULE_ID}`, {
           action: this.SOCKET_ACTION_SETFUDGE,
           fudge: value

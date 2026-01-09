@@ -30,15 +30,23 @@ function applyListeners(html) {
 				const diceTray = $chatForm.nextElementSibling;
 
 				const syncButton = diceTray.querySelector('input[type="checkbox"][id=dcp-sync]');
+				const syncButtonLabel = syncButton.parentElement;
 				syncButton.addEventListener("click", (event) => {
 					if (event.currentTarget.checked) {
 						event.currentTarget.parentElement.title = game.i18n.localize('dcp.SyncWithPlayer');
+						syncButtonLabel.classList.add('broadcasting');
 						cryptoRandomGenerator.sendSetFudge(Settings.fudgeValue);
 					} else {
 						event.currentTarget.parentElement.title = game.i18n.localize('dcp.NotSyncWithPlayer');
+						syncButtonLabel.classList.remove('broadcasting');
 						cryptoRandomGenerator.sendReset();
 					}
 				});
+				
+				// Set initial state if checkbox is already checked
+				if (syncButton.checked) {
+					syncButtonLabel.classList.add('broadcasting');
+				}
 
 				const diceButtons = diceTray.querySelectorAll('input[type="radio"][id^=dcp-dice-]');
 				
